@@ -1,0 +1,90 @@
+swagger: "2.0"
+info:
+  title: Ing web nodejs-docker lab
+  description: API rest using nodejs, mongo, express and swagger
+  version: 1.0.0
+schemes:
+  - http
+produces:
+  - application/json
+paths:
+  "/users":
+    get:
+      tags:
+        - Users
+      summary: Get all the users
+      responses:
+        "200":
+          description: Users found
+      schema:
+        default:
+          description: "Successful operation"
+    post:
+      tags:
+        - Users
+      summary: Create a new user
+      responses:
+        "201":
+          description: User created
+  "/users/{userId}":
+    parameters:
+      - name: userId
+        in: path
+        required: true
+        description: ID of user that we want to find
+        type: string
+    get:
+      tags:
+        - Users
+      summary: Get user with given ID
+      responses:
+        200:
+          description: User found
+          schema:
+            type: object
+            $ref: "#/definitions/User"
+        404:
+          description: User not found
+    put:
+      description: Use to update a users
+      parameters:
+        - name: user
+          in: query
+          description: Name of our user
+          required: false
+          schema:
+            type: string
+            format: string
+      responses:
+        "201":
+          description: A successful response
+        "404":
+          description: User not found
+
+definitions:
+  User:
+    type: "object"
+    properties:
+      _id:
+        type: "string"
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      email:
+        type: "string"
+      phoneNumber:
+        type: "string"
+      address:
+        type: "string"
+      city:
+        type: "string"
+      state:
+        type: "string"
+      zipCode:
+        type: "string"
+      country:
+        type: "string"
+      __v:
+        type: "integer"
+        format: "int64"

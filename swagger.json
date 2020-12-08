@@ -1,0 +1,52 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Ing web nodejs-docker lab",
+    "description": "API rest using nodejs, mongo, express and swagger",
+    "version": "1.0.0"
+  },
+  "schemes": ["https"],
+  "produces": ["application/json"],
+  "paths": {
+    "/users/{userId}": {
+      "parameters": [
+        {
+          "name": "userId",
+          "in": "path",
+          "required": true,
+          "description": "ID of user that we want to find",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get user with given ID",
+        "responses": {
+          "200": {
+            "description": "User is found"
+          }
+        }
+      },
+      "put": {
+        "description": "Use to update a users",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "query",
+            "description": "Name of our user",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "A successful response"
+          }
+        }
+      }
+    }
+  }
+}

@@ -25,7 +25,7 @@ This project is an API built using docker, nodejs, mongodb, express and swagger.
 
 1. This way it is not necessary to clone the repository, the only thing you must do is create a docker compose very similar to the previous one, change is the image, now it will be the one in the docker hub repository:
 
-    ![remote-docker-compose](https://github.com/DanielSantaR/docker-nodejs/blob/master/readme/images/remote-dc.png)
+    ![remote-docker-compose](https://github.com/DanielSantaR/docker-nodejs/blob/master/images/remote-dc.png)
 
     **Note:** The tag in this example is the latest but you can specify the tag by exploring ["https://hub.docker.com/r/danielsantar98/docker-node/tags"](https://hub.docker.com/r/danielsantar98/docker-node/tags)
 

@@ -2,17 +2,13 @@ version: "3.2"
 
 services:
   web:
-    image: docker-nodejs
-    build:
-      context: .
+    image: danielsantar98/docker-node:latest
     environment:
       - MONGO_USERNAME=$MONGO_USERNAME
       - MONGO_PASSWORD=$MONGO_PASSWORD
       - MONGO_HOSTNAME=mongo-db
       - MONGO_PORT=$MONGO_PORT
       - MONGO_DB=$MONGO_DB
-    depends_on: 
-      - mongo-db
     ports:
       - 3005:3000
     networks:

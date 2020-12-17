@@ -10,30 +10,49 @@ produces:
 paths:
   "/users":
     get:
+      description: Use to get all users
       tags:
         - Users
       summary: Get all the users
       responses:
-        "200":
+        200:
           description: Users found
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/User"
       schema:
         default:
           description: "Successful operation"
     post:
+      description: Use to create a new user
       tags:
         - Users
       summary: Create a new user
+      parameters:
+        - name: user
+          description: User object
+          in: body
+          requited: true
+          type: object
+          schema:
+            $ref: "#/definitions/NewUser"
       responses:
-        "201":
+        201:
           description: User created
+          schema:
+            type: object
+            $ref: "#/definitions/User"
+
   "/users/{userId}":
     parameters:
       - name: userId
         in: path
         required: true
-        description: ID of user that we want to find
+        description: ID of user that you want to find
         type: string
     get:
+      description: Use to get a specific user
       tags:
         - Users
       summary: Get user with given ID
@@ -43,27 +62,73 @@ paths:
           schema:
             type: object
             $ref: "#/definitions/User"
-        404:
-          description: User not found
     put:
-      description: Use to update a users
+      description: Use to update a specific user
+      tags:
+        - Users
       parameters:
         - name: user
-          in: query
-          description: Name of our user
-          required: false
+          description: User object
+          in: body
+          requited: true
+          type: object
           schema:
-            type: string
-            format: string
+            $ref: "#/definitions/UpdateUser"
       responses:
-        "201":
-          description: A successful response
-        "404":
-          description: User not found
+        201:
+          description: User updated
+          schema:
+            type: object
+            $ref: "#/definitions/User"
+
+    delete:
+      description: Use to delete a specific user
+      tags:
+        - Users
+      responses:
+        200:
+          description: User deleted
+          schema:
+            type: object
+            $ref: "#/definitions/User"
+      
 
 definitions:
+  NewUser:
+    type: "object"
+    required:
+      - firstName
+      - lastName
+      - email
+      - phoneNumber
+    properties:
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      email:
+        type: "string"
+      phoneNumber:
+        type: "integer"
+        format: "int64"
+      address:
+        type: "string"
+      city:
+        type: "string"
+      state:
+        type: "string"
+      zipCode:
+        type: "string"
+      country:
+        type: "string"
+
   User:
     type: "object"
+    required:
+      - firstName
+      - lastName
+      - email
+      - phoneNumber
     properties:
       _id:
         type: "string"
@@ -74,7 +139,8 @@ definitions:
       email:
         type: "string"
       phoneNumber:
-        type: "string"
+        type: "integer"
+        format: "int64"
       address:
         type: "string"
       city:
@@ -88,3 +154,26 @@ definitions:
       __v:
         type: "integer"
         format: "int64"
+
+  UpdateUser:
+    type: "object"
+    properties:
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      email:
+        type: "string"
+      phoneNumber:
+        type: "integer"
+        format: "int64"
+      address:
+        type: "string"
+      city:
+        type: "string"
+      state:
+        type: "string"
+      zipCode:
+        type: "string"
+      country:
+        type: "string"

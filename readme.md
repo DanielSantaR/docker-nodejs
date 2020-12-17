@@ -17,7 +17,7 @@ This project is an API built using docker, nodejs, mongodb, express and swagger.
 	In the Docker-compose.yaml you can also define the mongo service (mongo-db), an external volume (dbdata) where the data will be stored in your machine so that when the container dies the information will not be lost and an external network (ing-web) that will be the network that the containers will share (this is a docker's own network that allows containers to communicate with each other).
 	To be able to run the project you must create the volume and the network, for this you launch the command `docker network create ing-web` and for the `docker volume create dbdata`.
 
-	![local-docker-compose](https://github.com/DanielSantaR/docker-nodejs/blob/readme/images/local-dc.png)
+	![local-docker-compose](https://github.com/DanielSantaR/docker-nodejs/blob/master/images/local-dc.png)
 
 4. Finally run `docker-compose -f Docker-compose.yaml up --build` and go to [localhost:3005/api-docs](localhost:3005/docs) (replace 3005 with your chosen port)
 
@@ -25,7 +25,7 @@ This project is an API built using docker, nodejs, mongodb, express and swagger.
 
 1. This way it is not necessary to clone the repository, the only thing you must do is create a docker compose very similar to the previous one, change is the image, now it will be the one in the docker hub repository:
 
-    ![remote-docker-compose](https://github.com/DanielSantaR/docker-nodejs/blob/readme/images/remote-dc.png)
+    ![remote-docker-compose](https://github.com/DanielSantaR/docker-nodejs/blob/master/images/remote-dc.png)
 
     **Note:** The tag in this example is the latest but you can specify the tag by exploring ["https://hub.docker.com/r/danielsantar98/docker-node/tags"](https://hub.docker.com/r/danielsantar98/docker-node/tags)
 

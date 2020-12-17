@@ -10,4 +10,6 @@ COPY . .
 
 EXPOSE 3000
 
+ENTRYPOINT [ "/usr/src/app/entrypoint.sh" ]
+
 CMD [ "node", "./bin/www" ]

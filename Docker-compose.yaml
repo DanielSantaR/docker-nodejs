@@ -11,8 +11,6 @@ services:
       - MONGO_HOSTNAME=mongo-db
       - MONGO_PORT=$MONGO_PORT
       - MONGO_DB=$MONGO_DB
-    depends_on: 
-      - mongo-db
     ports:
       - 3005:3000
     networks:

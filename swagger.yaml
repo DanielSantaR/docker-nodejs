@@ -21,6 +21,10 @@ paths:
             type: array
             items:
               $ref: "#/definitions/User"
+        500:
+          description: Internal server error
+          schema:
+            type: object
       schema:
         default:
           description: "Successful operation"
@@ -43,6 +47,14 @@ paths:
           schema:
             type: object
             $ref: "#/definitions/User"
+        422:
+          description: Unprocessable entity
+          schema:
+            type: object
+        500:
+          description: Internal server error
+          schema:
+            type: object
 
   "/users/{userId}":
     parameters:
@@ -62,10 +74,19 @@ paths:
           schema:
             type: object
             $ref: "#/definitions/User"
+        404:
+          description: User not found
+          schema:
+            type: object
+        500:
+          description: Internal server error
+          schema:
+            type: object
     put:
       description: Use to update a specific user
       tags:
         - Users
+      summary: Update a user with given ID
       parameters:
         - name: user
           description: User object
@@ -80,18 +101,42 @@ paths:
           schema:
             type: object
             $ref: "#/definitions/User"
+        404:
+          description: User not found
+          schema:
+            type: object
+        422:
+          description: Unprocessable entity
+          schema:
+            type: object
+        500:
+          description: Internal server error
+          schema:
+            type: object
 
     delete:
       description: Use to delete a specific user
       tags:
         - Users
+      summary: Delete a user with given ID
       responses:
         200:
           description: User deleted
           schema:
             type: object
             $ref: "#/definitions/User"
-      
+        404:
+          description: User not found
+          schema:
+            type: object
+        422:
+          description: Unprocessable entity
+          schema:
+            type: object
+        500:
+          description: Internal server error
+          schema:
+            type: object
 
 definitions:
   NewUser:
